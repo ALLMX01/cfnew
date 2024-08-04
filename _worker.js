@@ -1687,16 +1687,18 @@ function subAddresses(host,UUID,noTLS,newAddressesapi,newAddressescsv,newAddress
 	}).join('\n');
 
 // 假设 responseBody 已经被定义并且包含原始的响应数据
-let responseBody = "原始的响应数据 cf.090227.xyz 更多信息 t.me/CMLiussss 解锁更多优选节点";
+const responseBody = "原始的响应数据 cf.090227.xyz 更多信息 t.me/CMLiussss 解锁更多优选节点";
+
+// 创建一个新的变量来存储替换后的文本
+let modifiedResponse = responseBody;
 
 // 替换文本
-responseBody = responseBody.replace('cf.090227.xyz', 'blog.allmx.eu.org');
-responseBody = responseBody.replace('%E5%8A%A0%E5%85%A5%E6%88%91%E7%9A%84%E9%A2%91%E9%81%93t.me/CMLiussss%E8%A7%A3%E9%94%81%E6%9B%B4%E5%A4%9A%E4%BC%98%E9%80%89%E8%8A%82%E7%82%B9', 'ALLMX%E7%A7%80%E7%A5%9E%E9%96%8B%E5%A4%A9');
+modifiedResponse = modifiedResponse.replace('cf.090227.xyz', 'blog.allmx.eu.org');
+modifiedResponse = modifiedResponse.replace('%E5%8A%A0%E5%85%A5%E6%88%91%E7%9A%84%E9%A2%91%E9%81%93t.me/CMLiussss%E8%A7%A3%E9%94%81%E6%9B%B4%E5%A4%9A%E4%BC%98%E9%80%89%E8%8A%82%E7%82%B9', 'ALLMX%E7%A7%80%E7%A5%9E%E9%96%8B%E5%A4%A9');
 
-let base64Response = responseBody; // 重新进行 Base64 编码
+let base64Response = modifiedResponse; // 重新进行 Base64 编码
 if (noTLS === 'true') {
     base64Response += `\n${notlsresponseBody}`;
-}
 return btoa(base64Response);
 }
 
